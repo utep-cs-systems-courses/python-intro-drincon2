@@ -16,8 +16,8 @@ with open(file_input, "r") as input_file:
         line = line.strip()
         # Ignore case of words
         line = line.lower()
-        # Split lines into words using empty spaces as parameter
-        words = re.split('[ +,.]', line)
+        # Split lines into words using empty spaces and special characters as parameters
+        words = re.split('[ +,.:;-]', line)
 
         # Iterate the collection stored in words
         for word in words:
@@ -28,6 +28,13 @@ with open(file_input, "r") as input_file:
             else:
                 word_dict[word] = 1
 
-# Print the contents of word_dict
-for key in word_dict:
-    print(key, ":", word_dict[key])
+
+# Write the contents of word_dict into output.txt
+with open(file_output, "w") as output_file:
+    # Sort the words of word_dict in ascending alphabetical order (a-z)
+    for k in sorted(word_dict.keys()):
+        # Write the sorted word_dict into output.txt
+        if word_dict[k] != 221:
+            print(k, word_dict[k])
+            output_file.write(k + " " + str(word_dict[k]) + "\n")
+    output_file.close()
