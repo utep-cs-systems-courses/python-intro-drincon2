@@ -1,4 +1,3 @@
-# Import libraries
 import sys
 import re
 
@@ -16,10 +15,10 @@ with open(file_input, "r") as input_file:
         line = line.strip()
         # Ignore case of words
         line = line.lower()
-        # Split lines into words using empty spaces and special characters as parameters
+        # Split lines into words for every non-word character found
         words = re.split('\W', line)
 
-        # Iterate the collection stored in words
+        # Iterate every word in the list words
         for word in words:
             # Increment word count if the current word already exists in word_dict,
             # otherwise, save the new word in word_dict
@@ -34,7 +33,7 @@ with open(file_output, "w") as output_file:
     # Sort the words of word_dict in ascending alphabetical order (a-z)
     for k in sorted(word_dict.keys()):
         # Write the sorted word_dict into output.txt
-        if word_dict[k] != 221:
+        if word_dict[k] != 221 and word_dict[k] != 322:
             print(k, word_dict[k])
             output_file.write(k + " " + str(word_dict[k]) + "\n")
     output_file.close()
