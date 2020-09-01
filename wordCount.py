@@ -17,7 +17,7 @@ with open(file_input, "r") as input_file:
         # Ignore case of words
         line = line.lower()
         # Split lines into words using empty spaces and special characters as parameters
-        words = re.split('[ +,.:;-]', line)
+        words = re.split('\W', line)
 
         # Iterate the collection stored in words
         for word in words:
